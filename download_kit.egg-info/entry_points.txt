@@ -1,0 +1,3 @@
+[console_scripts]
+download_kit = downloadKit.console:main
+
