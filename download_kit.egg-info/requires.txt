@@ -1,3 +1,7 @@
 tqdm
 urllib3
 requests
+paramiko
+pytest
+pytest-runner
+pytest-mock

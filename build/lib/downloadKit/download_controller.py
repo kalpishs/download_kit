@@ -57,17 +57,18 @@ class DownloadController(object):
     def life_cycle_hook(self):
         try:
             while self._urls.unfinished_tasks > 0:
-                for update_process_bars in self._download_url_list:
-                    update_process_bars.build_progress()
+                self.update_process_bar()
                 time.sleep(1)
+            self.update_process_bar()
             self.garbage_handler()
             logging.info(f"Successfully downloaded in {self.output_dir}")
-            tqdm.write('Download Completed!')
+            tqdm.write('Process Complete')
         except:
-            tqdm.write('')
+            tqdm.write('Download failure!!')
             self.garbage_handler()
             sys.exit("exiting downloading tasks")
             pass
+        pass
 
     def download_processor(self):
         while True:
@@ -94,3 +95,7 @@ class DownloadController(object):
             logging.info(f"implementation of {parsed_url.scheme} unavailable")
             print(f'error: {e} skipping: {parse.urlunparse(parsed_url)}')
             return
+
+    def update_process_bar(self):
+        for update_process_bars in self._download_url_list:
+            update_process_bars.build_progress()

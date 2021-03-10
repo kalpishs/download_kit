@@ -29,13 +29,13 @@ def argument_parser():
 
 class writeable_dir(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
-        prospective_dir=values
-        if not os.path.isdir(prospective_dir):
-            raise argparse.ArgumentTypeError("readable_dir:{0} is not a valid path".format(prospective_dir))
-        if os.access(prospective_dir, os.R_OK):
-            setattr(namespace,self.dest,prospective_dir)
+        prospective_dir = values
+        if not path.isdir(prospective_dir):
+            raise argparse.ArgumentTypeError("%s is not a valid path" % prospective_dir)
+        if os.access(prospective_dir, os.W_OK):
+            setattr(namespace, self.dest, prospective_dir)
         else:
-            raise argparse.ArgumentTypeError("readable_dir:{0} is not a readable dir".format(prospective_dir))
+            raise argparse.ArgumentTypeError("%s is not a writeable dir" % prospective_dir)
 
 
 def main():
@@ -44,4 +44,3 @@ def main():
     output_dir = args.output_dir
     controller = download_controller.DownloadController(output_dir=output_dir,downloadUrls=downloadUrls)
     controller.execute()
-

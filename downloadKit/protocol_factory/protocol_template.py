@@ -1,8 +1,6 @@
 from abc import ABC, abstractmethod
 import os
-
 import logging
-
 from downloadKit.constants import max_duplicate_files
 
 
@@ -62,7 +60,7 @@ class ProtocolTemplate(ABC):
         try:
             os.makedirs(os.path.dirname(self.file_details))
         except:
-            raise FileNotFoundError(f"undefined path {self.file_details}")
+            print(f"directory already exist Dir Name:{os.path.dirname(self.file_details)}")
 
     @abstractmethod
     def progress(self):
