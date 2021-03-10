@@ -1,3 +1,4 @@
 http://speedtest.ftp.otenet.gr/files/test100k.db
-http://speedtest.ftp.otenet.gr/files/test10Mb.db
-ftp://speedtest:speedtest@ftp.otenet.gr/test10Mb.db
+http://speedtest-nyc3.digitalocean.com/10mb.test
+ftp://speedtest:speedtest@ftp.otenet.gr/test100k.db
+http://speedtest.ftp.otenet.gr/files/test100k.db
