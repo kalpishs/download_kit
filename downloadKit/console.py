@@ -17,7 +17,7 @@ def argument_parser():
     ldir = tempfile.mkdtemp()
     atexit.register(lambda dir=ldir: shutil.rmtree(ldir))
     #File containing URLs to download from.
-    parsObj.add_argument('-i', '--inputFile', type=argparse.FileType('r', encoding='UTF-8'), default=sys.stdin,
+    parsObj.add_argument('-i', '--inputFile', type=argparse.FileType('r', encoding='UTF-8'), default=FileNotFoundError,
                         help='File containing urls (default: stdin)')
 
     #Output directory of downloaded files.
@@ -31,7 +31,10 @@ class writeable_dir(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         prospective_dir = values
         if not path.isdir(prospective_dir):
-            raise argparse.ArgumentTypeError("%s is not a valid path" % prospective_dir)
+            try:
+                os.mkdir(prospective_dir)
+            except:
+                raise PermissionError("insufficient permission to make directory")
         if os.access(prospective_dir, os.W_OK):
             setattr(namespace, self.dest, prospective_dir)
         else:

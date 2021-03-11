@@ -18,7 +18,7 @@ class ProtocolTemplate(ABC):
         file_name=self.get_file()
         count = 0
         duplicate_file_name=file_name
-        if file_name is '':
+        if file_name == '':
             raise FileNotFoundError('cannot download due to file unavailable.')
         while True:
             if count >= max_duplicate_files:
@@ -60,7 +60,7 @@ class ProtocolTemplate(ABC):
         try:
             os.makedirs(os.path.dirname(self.file_details))
         except:
-            print(f"directory already exist Dir Name:{os.path.dirname(self.file_details)}")
+            logging.info(f"directory already exist Dir Name:{os.path.dirname(self.file_details)}")
 
     @abstractmethod
     def progress(self):

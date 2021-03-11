@@ -5,6 +5,7 @@ import os
 import logging
 import requests
 
+
 class HttpUrlDownloader(ProtocolTemplate):
     def __init__(self, url, output_dir):
         super().__init__(url, output_dir)
@@ -19,6 +20,7 @@ class HttpUrlDownloader(ProtocolTemplate):
     """
         Main execution of url downloader request
     """
+
     def execute(self):
         try:
             super().execute()
@@ -26,9 +28,8 @@ class HttpUrlDownloader(ProtocolTemplate):
             try:
                 self._req.raise_for_status()
                 self._file_length = int(self._req.headers['content-length'])
-            except Exception as e:
-                print("unable to process download")
-                return e
+            except KeyError or ValueError:
+                print("downloading with missing content length")
             with open(self.file_details, "wb") as file:
                 for chunk in self._req.iter_content(chunk_size=self._chunk_size):
                     self._downloaded_length += len(chunk)
