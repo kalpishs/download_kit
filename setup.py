@@ -22,7 +22,6 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     tests_require=['pytest'],
-    cmdclass={'test': PyTest},
     entry_points={
         'console_scripts': [
             'download_kit = downloadKit.console:main',

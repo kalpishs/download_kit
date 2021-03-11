@@ -21,13 +21,11 @@ class HttpMockHandler(BaseHTTPRequestHandler):
             self.send_header(content_type,type_parm)
             self.end_headers()
             self.wfile.write(content)
-            return
         elif re.search(re.compile(r'_none'), self.path):
             self.send_response(requests.codes.not_found)
             self.send_header(content_type, type_parm)
             self.end_headers()
-            self.wfile.write(b'')
-            return
+            self.wfile.write(empty_content)
 
     @staticmethod
     def mocked_server(port):

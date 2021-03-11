@@ -60,6 +60,7 @@ class DownloadController(object):
                 self.update_process_bar()
                 time.sleep(1)
             self.update_process_bar()
+            time.sleep(1)
             self.garbage_handler()
             logging.info(f"Successfully downloaded in {self.output_dir}")
             tqdm.write('Process Complete')

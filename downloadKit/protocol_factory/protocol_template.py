@@ -43,10 +43,11 @@ class ProtocolTemplate(ABC):
         try:
             with open(download_filepath, 'x'):
                 self._op_file=download_filepath
+                pass
         except FileExistsError:
             return None
         else:
-            return self.file_details()
+            return self.file_details
         pass
 
     def clear_downloads(self):

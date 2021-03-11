@@ -52,7 +52,6 @@ class ftpUrlDownloader(ProtocolTemplate):
                 self._ftp.abort()
         except Exception as e:
             logging.info(f"failed closing & clearing downloads exception{e}")
-            print("failed closing & clearing downloads.")
 
     def progress(self):
         return self._downloaded_length, self._file_length
