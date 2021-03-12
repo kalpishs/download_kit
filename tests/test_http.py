@@ -38,6 +38,6 @@ class TestHttpUrlDownloader(object):
     (parse.urlparse(test_http_url), http_url_file_name),
     (parse.urlparse(test_https_url1), https_url1_file_name)
 ])
-def test_decision_engine(parse_url, expected, tmpdir):
+def test_file_name_engine(parse_url, expected, tmpdir):
     assert HttpUrlDownloader(parse_url, str(tmpdir)).get_file() == expected
 

@@ -32,7 +32,7 @@ class sftpUrlDownloader(ProtocolTemplate):
             except Exception as e:
                 logging.info(f"login error Url: {parse.urlunparse(self.url)}")
                 print(f"login error Url: {parse.urlunparse(self.url)}")
-                print(f"exception as {e}")
+                self.clear()
             self._file_length=self._sftp.stat(self.url.path).st_size
             with open(self.file_details, 'wb') as f:
                 with self._sftp.open(self.url.path, mode="r", bufsize=bufsize) as write_file:

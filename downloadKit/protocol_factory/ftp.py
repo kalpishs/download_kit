@@ -55,3 +55,5 @@ class ftpUrlDownloader(ProtocolTemplate):
 
     def progress(self):
         return self._downloaded_length, self._file_length
+
+

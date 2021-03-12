@@ -5,3 +5,4 @@ paramiko
 pytest
 pytest-runner
 pytest-mock
+setuptools
