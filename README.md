@@ -7,9 +7,9 @@ Download-kit is an extensible multi-protocol download kit with multiple file dow
 * ftp
 * sftp
 
-##Usage
+## Usage
 
-###Install 
+### Install 
  1. The Installation requires Python>=3.7 
  2. Install requirements.txt
  3. Install the download_kit package using `setup.py`
