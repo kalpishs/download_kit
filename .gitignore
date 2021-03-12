@@ -135,3 +135,6 @@ dmypy.json
 
 #download
 download/
+
+#macbook
+..DS_Store
